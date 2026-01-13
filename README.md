@@ -1,16 +1,23 @@
-## Hi there 👋
+# 👋 Hi, I'm Brandon!
 
-<!--
-**le-brandon04/le-brandon04** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+### 🚀 About Me
+I'm a student learning GitHub, programming, and cybersecurity. I enjoy building projects, experimenting with code, and improving my technical skills every day.
 
-Here are some ideas to get you started:
+### 📚 What I'm Learning
+- Git & GitHub
+- Python development
+- Cybersecurity fundamentals
+- Web development basics
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🔧 What I'm Working On
+- Completing GitHub learning courses
+- Building small practice repositories
+- Understanding version control workflows
+
+### 🎮 My Interests
+- Technology & software
+- Gaming
+- Fitness & self-improvement
+- Creative digital projects
+
+Thanks for visiting my profile 😊
