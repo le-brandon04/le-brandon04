@@ -20,4 +20,3 @@ I'm a student learning GitHub, programming, and cybersecurity. I enjoy building 
 - Fitness & self-improvement
 - Creative digital projects
 
-Thanks for visiting my profile 😊
