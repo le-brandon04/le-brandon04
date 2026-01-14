@@ -1,5 +1,3 @@
-# 👋 Hi, I'm Brandon!
-
 ### 🚀 About Me
 I'm a student learning GitHub, programming, and cybersecurity. I enjoy building projects, experimenting with code, and improving my technical skills every day.
 
