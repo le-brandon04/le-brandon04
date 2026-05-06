@@ -21,20 +21,35 @@ The Cybersecurity Learning Roadmap Tracker helps users organize and manage their
 - Gradle
 
 ### Steps
+
 1. Clone the repository
-```bash
 git clone https://github.com/le-brandon04/le-brandon04.git
 cd le-brandon04
-```
 
 2. Build the project
-```bash
 ./gradlew clean build -x test
-```
 
 3. Run the application
-```bash
 ./gradlew run
-```
 
 ## Project Structure
+app/src/main/java/org/csu/cpsc/roadmap/
+├── Main.java               # Entry point
+├── RoadmapTracker.java     # Core tracker logic
+├── Certification.java      # Certification custom object
+├── StudyResource.java      # Study resource custom object
+└── Goal.java               # Study goal custom object
+
+## Data Structures Used
+
+| Feature | Data Structure |
+|---------|----------------|
+| Certification Manager | ArrayList |
+| Study Material Tracker | HashMap |
+| Study Goal Queue | PriorityQueue |
+| Completion History | Stack |
+| Sorting | Custom Insertion Sort with Comparable |
+
+## Author
+
+Brandon — Columbus State University, CPSC 2108
