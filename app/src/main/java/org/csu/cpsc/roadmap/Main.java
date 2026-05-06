@@ -2,7 +2,17 @@ package org.csu.cpsc.roadmap;
 
 import java.util.Calendar;
 
+/**
+ * Entry point for the Cybersecurity Learning Roadmap Tracker application.
+ * Demonstrates all five core features of the tracker.
+ */
 public class Main {
+
+    /**
+     * Main method that runs the Cybersecurity Learning Roadmap Tracker.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
 
         RoadmapTracker tracker = new RoadmapTracker();
@@ -34,10 +44,8 @@ public class Main {
         tracker.addCertification(aws);
 
         tracker.displayAll();
-
         tracker.updateStatus("CompTIA Security+", "Completed");
         tracker.displayAll();
-
         tracker.removeCertification("AWS Security Specialty");
         tracker.displayAll();
 
@@ -52,10 +60,8 @@ public class Main {
 
         tracker.getResourcesByCert("CEH");
         tracker.getResourcesByCert("CISSP");
-
         tracker.markResourceComplete("CEH", "CEH Study Guide");
         tracker.getResourcesByCert("CEH");
-
         tracker.removeResource("CISSP", "CISSP Video Course");
         tracker.getResourcesByCert("CISSP");
 

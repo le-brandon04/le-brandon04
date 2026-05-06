@@ -2,20 +2,28 @@ package org.csu.cpsc.roadmap;
 
 import java.util.*;
 
+/**
+ * Manages the Cybersecurity Learning Roadmap Tracker.
+ * Provides functionality for managing certifications, study materials,
+ * study goals, completion history, and sorting.
+ */
 public class RoadmapTracker {
 
-    // Feature 1: List — stores all certifications
+    /** List of all certifications being tracked. */
     private List<Certification> certifications;
 
-    // Feature 2: Map — maps certification name to study resources
+    /** Map of certification names to their associated study resources. */
     private Map<String, List<StudyResource>> studyMaterials;
 
-    // Feature 3: Queue — manages upcoming study goals by priority
+    /** Priority queue of upcoming study goals ordered by priority. */
     private PriorityQueue<Goal> studyQueue;
 
-    // Feature 4: Stack — tracks completed certifications
+    /** Stack tracking completed certifications in order of completion. */
     private Stack<Certification> completionHistory;
 
+    /**
+     * Constructs a new RoadmapTracker with empty data structures.
+     */
     public RoadmapTracker() {
         certifications = new ArrayList<>();
         studyMaterials = new HashMap<>();
@@ -25,25 +33,40 @@ public class RoadmapTracker {
 
     // ── Feature 1: Certification Manager ─────────────────────────────────
 
+    /**
+     * Adds a certification to the tracker.
+     *
+     * @param cert the Certification to add
+     */
     public void addCertification(Certification cert) {
         certifications.add(cert);
         studyMaterials.put(cert.getName(), new ArrayList<>());
         System.out.println("Added certification: " + cert.getName());
     }
 
+    /**
+     * Removes a certification from the tracker by name.
+     *
+     * @param name the name of the certification to remove
+     */
     public void removeCertification(String name) {
         certifications.removeIf(c -> c.getName().equals(name));
         studyMaterials.remove(name);
         System.out.println("Removed certification: " + name);
     }
 
+    /**
+     * Updates the status of a certification.
+     * If the status is set to Completed, the certification is pushed to the history stack.
+     *
+     * @param name   the name of the certification to update
+     * @param status the new status
+     */
     public void updateStatus(String name, String status) {
         for (Certification c : certifications) {
             if (c.getName().equals(name)) {
                 c.setStatus(status);
                 System.out.println("Updated status for " + name + " to: " + status);
-
-                // If completed, push to history stack
                 if (status.equals("Completed")) {
                     completionHistory.push(c);
                     System.out.println(name + " pushed to completion history.");
@@ -54,6 +77,9 @@ public class RoadmapTracker {
         System.out.println("Certification not found: " + name);
     }
 
+    /**
+     * Displays all certifications currently being tracked.
+     */
     public void displayAll() {
         System.out.println("\n=== All Certifications ===");
         if (certifications.isEmpty()) {
@@ -67,6 +93,12 @@ public class RoadmapTracker {
 
     // ── Feature 2: Study Material Tracker ────────────────────────────────
 
+    /**
+     * Adds a study resource to a certification.
+     *
+     * @param certName the name of the certification
+     * @param resource the StudyResource to add
+     */
     public void addResource(String certName, StudyResource resource) {
         if (!studyMaterials.containsKey(certName)) {
             System.out.println("Certification not found: " + certName);
@@ -76,6 +108,12 @@ public class RoadmapTracker {
         System.out.println("Added resource '" + resource.getResourceName() + "' to " + certName);
     }
 
+    /**
+     * Removes a study resource from a certification.
+     *
+     * @param certName     the name of the certification
+     * @param resourceName the name of the resource to remove
+     */
     public void removeResource(String certName, String resourceName) {
         if (!studyMaterials.containsKey(certName)) {
             System.out.println("Certification not found: " + certName);
@@ -85,6 +123,12 @@ public class RoadmapTracker {
         System.out.println("Removed resource '" + resourceName + "' from " + certName);
     }
 
+    /**
+     * Marks a study resource as complete.
+     *
+     * @param certName     the name of the certification
+     * @param resourceName the name of the resource to mark complete
+     */
     public void markResourceComplete(String certName, String resourceName) {
         if (!studyMaterials.containsKey(certName)) {
             System.out.println("Certification not found: " + certName);
@@ -100,6 +144,11 @@ public class RoadmapTracker {
         System.out.println("Resource not found: " + resourceName);
     }
 
+    /**
+     * Displays all study resources for a given certification.
+     *
+     * @param certName the name of the certification
+     */
     public void getResourcesByCert(String certName) {
         System.out.println("\n=== Study Resources for " + certName + " ===");
         if (!studyMaterials.containsKey(certName)) {
@@ -118,11 +167,19 @@ public class RoadmapTracker {
 
     // ── Feature 3: Study Goal Queue ───────────────────────────────────────
 
+    /**
+     * Adds a study goal to the priority queue.
+     *
+     * @param goal the Goal to enqueue
+     */
     public void enqueueGoal(Goal goal) {
         studyQueue.add(goal);
         System.out.println("Enqueued goal: " + goal.getGoalName());
     }
 
+    /**
+     * Removes and displays the highest priority goal from the queue.
+     */
     public void dequeueGoal() {
         if (studyQueue.isEmpty()) {
             System.out.println("No goals in queue.");
@@ -132,6 +189,9 @@ public class RoadmapTracker {
         System.out.println("Dequeued goal: " + goal.getGoalName());
     }
 
+    /**
+     * Displays the next goal in the queue without removing it.
+     */
     public void peekNextGoal() {
         if (studyQueue.isEmpty()) {
             System.out.println("No goals in queue.");
@@ -140,6 +200,9 @@ public class RoadmapTracker {
         System.out.println("Next goal: " + studyQueue.peek());
     }
 
+    /**
+     * Displays all goals in the queue in priority order.
+     */
     public void displayQueue() {
         System.out.println("\n=== Study Goal Queue ===");
         if (studyQueue.isEmpty()) {
@@ -155,11 +218,19 @@ public class RoadmapTracker {
 
     // ── Feature 4: Completion History (Stack) ────────────────────────────
 
+    /**
+     * Pushes a certification onto the completion history stack.
+     *
+     * @param cert the Certification to push
+     */
     public void pushToHistory(Certification cert) {
         completionHistory.push(cert);
         System.out.println("Pushed to history: " + cert.getName());
     }
 
+    /**
+     * Removes the most recently completed certification from the history stack.
+     */
     public void popHistory() {
         if (completionHistory.isEmpty()) {
             System.out.println("No history to undo.");
@@ -169,6 +240,9 @@ public class RoadmapTracker {
         System.out.println("Removed from history: " + cert.getName());
     }
 
+    /**
+     * Displays the most recently completed certification without removing it.
+     */
     public void peekHistory() {
         if (completionHistory.isEmpty()) {
             System.out.println("No completion history.");
@@ -177,6 +251,9 @@ public class RoadmapTracker {
         System.out.println("Most recently completed: " + completionHistory.peek());
     }
 
+    /**
+     * Displays all completed certifications in the history stack.
+     */
     public void displayHistory() {
         System.out.println("\n=== Completion History ===");
         if (completionHistory.isEmpty()) {
@@ -191,8 +268,12 @@ public class RoadmapTracker {
         }
     }
 
-    // ── Feature 5: Custom Insertion Sort by Difficulty ───────────────────
+    // ── Feature 5: Custom Insertion Sort ─────────────────────────────────
 
+    /**
+     * Sorts all certifications by difficulty level in ascending order
+     * using a custom insertion sort algorithm.
+     */
     public void sortByDifficulty() {
         for (int i = 1; i < certifications.size(); i++) {
             Certification key = certifications.get(i);
@@ -206,6 +287,10 @@ public class RoadmapTracker {
         System.out.println("Certifications sorted by difficulty.");
     }
 
+    /**
+     * Sorts all certifications by exam date in ascending order
+     * using a custom insertion sort algorithm.
+     */
     public void sortByExamDate() {
         for (int i = 1; i < certifications.size(); i++) {
             Certification key = certifications.get(i);
